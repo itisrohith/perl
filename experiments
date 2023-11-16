@@ -1,0 +1,139 @@
+1.
+$DNA="AGTAGCTTA";
+$DNA=~s\T\U\g;
+print"$DNA/n";
+2.
+$DNA="ATGC";
+$DNA=~tr/ATGC/TACG/;
+print"$DNA\n";
+$dna="atgctagctaatgccct";
+$dna=~tr/atgc/ATGC/;
+print"$dna\n";
+3.
+$dna="atgggggcccatgtcgtaccggggacactgggggggcaattgggaaaccccatgccccgtacgatcgattttgactttaa
+acccccc";
+$GC=($dna=~tr/gc//);
+$percentage=100*($GC/length($dna));
+print "The percentage of GC = $percentage % \n";
+4.
+$DNA="atgcgatgatgcccggttagacgatgggtacccgtacgcgggggtttacaacctgctagcatcgacgatgatgatgcat
+gcatgtagtagctgcggcgtttttttttttagaaaaaaaaaaaagatcccctttttatgccgagttgcaaaatttagggccacacat
+gatgacagatgacgggtgtgtgcccagtgggcacagtgtgccagtgcgtgacgatgcccagaaaagtgaaacgtgccaaaaaaaa
+";
+$amino_acid="MGHVDYTRTLRVQLYDASRFHDGATAEQAGELHTVAFSKPAIADDIQKIVDTTAE
+VLGKRYSVNVFSN";
+$a=$DNA.$amino_acid;
+print"$a";
+5.
+$DNA="ATGCATTGCCTAATGCGCTATCGATGCC";
+$revcom=' ';
+for ($position=length($DNA)-1; $position>=0; --$position) {
+ $base=substr($DNA, $position, 1);
+ if($base eq 'A') {
+ $base = 'T';
+ }elsif($base eq 'T') {
+ $base = 'A';
+ }elsif($base eq 'C') {
+ $base = 'G';
+ }elsif($base eq 'G') {
+ $base = 'C';
+ }
+ $revcom .=$base;
+}
+print $DNA,"\n";
+print $revcom, "\n";
+exit;
+6.
+$protein= join"",qw(
+MSLERRVVVLRAFGAELHLTDPAKGFQFSLQKAEELFNDTPNAFMPRQFENPANPKIHYETTGPEIW
+RDSG
+);
+print $protein,"\n";
+$hydrophobic=($protein=~tr/GAVLIPFMWC//);
+$percentage=100*($hydrophobic/length($protein));
+print "The percentage of hydrophobic residues = $percentage % \n";
+exit;
+7.
+ATAGTTAGATGATAGGGTACCAGT
+$trypsin='C:\Users\Admin\Desktop\Bio Perl\31.txt';
+open(31,$trypsin);
+@trypsin1=<31>;
+print"@trypsin1\n";
+8.
+$pick="ATGC";
+$PICK=<STDIN>;
+chomp $pick;
+if($pick=~ tr/ATGC//) {
+ print"It is a DNAsequence";
+}
+else {
+ print"It is not a DNA sequence";
+}
+$pick="RYS";
+$PICK=<STDIN>;
+chomp $pick;
+if($pick=~ tr/ATGC//) {
+ print"It is a DNAsequence";
+}
+else {
+ print"It is not a DNA sequence";
+}
+9.
+@array = ('Ecoli','Yeast','Clostridium phytofermentas','Carsonella rudii','Lactobacilus');
+print"Type a organism name:";
+my $pick = <STDIN>;
+chomp $pick;
+if (grep {$_ eq $pick} @array) {
+ print"\n $pick, found";
+}
+else {
+ print"Not found";
+}
+exit;
+10.
+$DNA = 
+'AGTCTTATATAAATATATATATATATATATATTTTAAAAATATATATATATAAGGGCGATGAT
+GC';
+$DNA = uc $DNA;
+print $DNA, "\n\n";
+print " ENTER THE MOTIF : ";
+$motif = <STDIN>;
+chomp $motif;
+$motif = uc $motif;
+if ($DNA =~/$motif/)
+{ print "I found it";}
+else
+{print "I couldn't find";}
+exit;
+11.
+$DNA="TAGTAGATGCGCGCTAGACGATGCGATGCTGATGCTAGCGCCCGTGTCG";
+$cnt1=($DNA=~tr/A//);
+$cnt2=($DNA=~tr/T//);
+$cnt3=($DNA=~tr/G//);
+$cnt4=($DNA=~tr/C//);
+print("The count of A is:$cnt1\n");
+print("The count of T is:$cnt2\n");
+print("The count of G is:$cnt3\n");
+print("The count of C is:$cnt4\n");
+12.
+$DNA = 'ATATTTTAATATCTGACTGCAGTC';
+$position1 = 4;
+$position2 = 15;
+$base1 = substr($DNA, $position1, 1);
+$base2 = substr($DNA, $position2, 1);
+substr($DNA, $position1, 1) = $base2;
+substr($DNA, $position2, 1) = $base1;
+print "$DNA\n";
+exit;
+13.
+@BASES = ('A' ,'T' ,'C' ,'G' ,'D' ,'E' ,'F','H' ,'I' ,'K' ,'N' ,'P' ,'Q' ,'R' ,'V' ,'W' 
+,'Y' ,'S');
+for ( $i=0; $i<20; $i++ ) {
+print '>Random', "$i\n";
+for( $j=0; $j<100; $j++ ) {
+$r = $BASES[ int (rand 10)];
+print $r;
+print "\n" if ($j+1)%60 == 0 and $j;
+}
+print "\n";
+}
